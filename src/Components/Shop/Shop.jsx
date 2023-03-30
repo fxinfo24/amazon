@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { addToDb, getShoppingCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
@@ -16,12 +17,19 @@ const Shop = () => {
         .then(data => setItems(data))
     }, [])
 
+    // Get Cart data from local storage
+    useEffect( () => {
+        const storedBasket = getShoppingCart();
+        console.log(storedBasket);
+    }, [])
+
     // From Product.jsx
     const cartBtnHandler = (item) => {
-        console.log(item);
+        // console.log(item);
         // basket.push(item); // Plain JavaScript method
         const newBasket = [...basket, item];
         setBasket(newBasket);
+        addToDb(item.id)
     };
     return (
         <div className='shop-container'>
