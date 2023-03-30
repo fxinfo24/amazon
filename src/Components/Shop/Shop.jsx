@@ -19,9 +19,29 @@ const Shop = () => {
 
     // Get Cart data from local storage
     useEffect( () => {
+        // console.log(items);
         const storedBasket = getShoppingCart();
-        console.log(storedBasket);
-    }, [])
+        const savedBasket = [];
+        // console.log(storedBasket);
+        // Step 1: Get id/key
+        for(const key in storedBasket) {
+            // console.log(key);
+            // Step 2: Get the product by using id/key
+            const savedProduct = items.find(item => item.id === key);
+            // console.log(savedProduct);
+
+            // Step 3: Get the quantity of the product
+            if(savedProduct){
+                const quantity = storedBasket[key]
+                savedProduct.quantity = quantity
+                // Step 4: Add the added product to the saved basket
+                savedBasket.push(savedProduct)
+            }
+            console.log('Added product', savedProduct);
+        }
+        // Step 5: Set the cart quantity
+        setBasket(savedBasket);
+    }, [items])
 
     // From Product.jsx
     const cartBtnHandler = (item) => {

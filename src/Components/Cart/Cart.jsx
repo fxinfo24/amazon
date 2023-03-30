@@ -4,7 +4,7 @@ import "./Cart.css";
 const Cart = (props) => {
    const basket = props.basket; //Option 1
 //    const {basket} = props;  //Option 2
-   console.log(basket);
+//    console.log(basket);
 
    let total = 0;
    let shippingTotal = 0;
