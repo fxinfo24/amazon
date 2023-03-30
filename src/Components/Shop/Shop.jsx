@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
 
@@ -16,9 +17,10 @@ const Shop = () => {
     }, [])
 
     // From Product.jsx
-    const cartBtnHandler = (jinish) => {
-        // console.log(jinish);
-        const newBasket = [...basket, items];
+    const cartBtnHandler = (item) => {
+        console.log(item);
+        // basket.push(item); // Plain JavaScript method
+        const newBasket = [...basket, item];
         setBasket(newBasket);
     };
     return (
@@ -35,8 +37,8 @@ const Shop = () => {
                 }
             </div>
             <div className='cart-container'>
-                <h3>Order summery</h3>
-                <p>Selected Items: {basket.length}</p>
+               
+                <Cart basket = {basket}></Cart>
             </div>
             
         </div>
