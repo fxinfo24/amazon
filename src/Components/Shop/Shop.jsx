@@ -37,7 +37,7 @@ const Shop = () => {
                 // Step 4: Add the added product to the saved basket
                 savedBasket.push(savedProduct)
             }
-            console.log('Added product', savedProduct);
+            // console.log('Added product', savedProduct);
         }
         // Step 5: Set the cart quantity
         setBasket(savedBasket);
